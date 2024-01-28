@@ -29,6 +29,16 @@
                                     </template>
                                 </v-text-field>
                             </v-col>
+
+                            <v-col>
+                                <v-text-field outlined v-model="tripRate" label="Trip Rate" prepend-icon="mdi-currency"
+                                    required>
+                                    <template v-slot:prepend>
+                                        <v-select v-model="selectedCurrency" :items="currencyOptions" hide-details
+                                            outlined></v-select>
+                                    </template>
+                                </v-text-field>
+                            </v-col>
                         </v-row>
                     </form>
                 </v-card-text>
@@ -59,13 +69,19 @@
             <v-stepper-items>
                 <v-stepper-content step="1">
                     <v-card class="mb-12" color="white lighten-1">
-                        <v-card-subtitle>Pickup Details</v-card-subtitle>
+                        <v-toolbar>
+                        <v-toolbar-title>Pickup Details</v-toolbar-title>
+                            <v-spacer></v-spacer>
+                            <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Clear</p>
+                    </v-toolbar>
                         <v-card-text>
                             <v-row>
                                 <v-col sm="4" cols="6">
                                     <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Appointment Date</p>
-                                    <v-text-field outlined v-model="tripDate" label="Trip Date" prepend-icon="mdi-calendar"
-                                        type="date" required></v-text-field>
+                                    <!-- <v-text-field outlined v-model="tripDate" label="Trip Date" prepend-icon="mdi-calendar"
+                                        type="date" required></v-text-field> -->
+                                    <v-text-field outlined v-model="tripDate" label="Trip Date" type="date"
+                                        required></v-text-field>
                                 </v-col>
                                 <v-col sm="4" cols="6">
                                     <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Appointment Time</p>
@@ -86,6 +102,7 @@
                                     <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Shippers Name</p>
                                     <v-text-field outlined type="text" required></v-text-field>
                                 </v-col>
+
                                 <v-col sm="4" cols="6">
                                     <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Phone</p>
                                     <v-text-field v-model="phoneNumber" label="Phone Number" prepend-icon="mdi-phone"
@@ -96,8 +113,97 @@
                                         </template>
                                     </v-text-field>
                                 </v-col>
-                                
+
                             </v-row>
+                            <v-row>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Address</p>
+                                    <v-text-field outlined type="text" required
+                                        placeholder="Unit / Street 1 / Etc..."></v-text-field>
+                                </v-col>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Street 2</p>
+                                    <v-text-field outlined type="text" placeholder="Adress" required></v-text-field>
+                                </v-col>
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">State</p>
+                                    <v-text-field outlined type="text" required plcaeholder="state"></v-text-field>
+                                </v-col>
+
+                            </v-row>
+
+                            <v-row>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">City</p>
+                                    <v-text-field outlined type="text" required placeholder="City"></v-text-field>
+                                </v-col>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Postal Code</p>
+                                    <v-text-field outlined type="text" placeholder="Postal Code" required></v-text-field>
+                                </v-col>
+                            </v-row>
+
+                            <v-row>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Pickup Number</p>
+                                    <v-text-field outlined type="text" required placeholder="Pickup Number"></v-text-field>
+                                </v-col>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Contact Person</p>
+                                    <v-text-field outlined type="text" placeholder="Contact Person" required></v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-card-actions>
+                               
+
+                                <v-spacer></v-spacer>
+
+                                <v-btn text plain @click="show = !show">Show advance settings
+                                    <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                                </v-btn>
+                            </v-card-actions>
+
+                            <v-expand-transition>
+                                <div v-show="show">
+                                    <v-divider></v-divider>
+
+                                    <v-card-text>
+                                        <v-row>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Pickup Number</p>
+                                                <v-text-field outlined type="text" required placeholder="Pickup Number"></v-text-field>
+                                            </v-col>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Contact Person</p>
+                                                <v-text-field outlined type="text" placeholder="Contact Person" required></v-text-field>
+                                            </v-col>
+                                        </v-row>
+
+                                        <v-row>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Pickup Number</p>
+                                                <v-text-field outlined type="text" required placeholder="Pickup Number"></v-text-field>
+                                            </v-col>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Contact Person</p>
+                                                <v-text-field outlined type="text" placeholder="Contact Person" required></v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                    </v-card-text>
+                                </div>
+                            </v-expand-transition>
+
+
                         </v-card-text>
                     </v-card>
 
@@ -144,7 +250,7 @@ export default {
     components: {
         CountryRegionSelect,
     },
-   
+
 
     data() {
         return {
@@ -156,7 +262,8 @@ export default {
             tripTime: '',
             phoneNumber: '',
             selectedCountry: null,
-            
+            show: false,
+
         };
     },
     methods: {
