@@ -69,11 +69,12 @@
             <v-stepper-items>
                 <v-stepper-content step="1">
                     <v-card class="mb-12" color="white lighten-1">
-                        <v-toolbar>
+                        <v-toolbar flat>
                             <v-toolbar-title>Pickup Details</v-toolbar-title>
                             <v-spacer></v-spacer>
                             <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Clear</p>
                         </v-toolbar>
+                        <v-divider></v-divider>
                         <v-card-text>
                             <v-row>
                                 <v-col sm="6" cols="6">
@@ -234,9 +235,15 @@
 
                         </v-card-text>
                     </v-card>
-                    <v-btn color="primary ml-100" @click="e1 = 2" plain>
-                        Drop-off Details <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
+                    <v-row>
+                        <v-col cols="auto"></v-col><v-spacer></v-spacer>
+                        <v-col cols="auto">
+                            <v-btn color="primary ml-100" @click="e1 = 2" plain>
+                                Drop-off Details <v-icon>mdi-chevron-right</v-icon>
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+
 
                     <!-- <v-btn text>
                         Cancel
@@ -246,11 +253,12 @@
                 <v-stepper-content step="2">
                     <!-- <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card> -->
                     <v-card class="mb-12" color="white lighten-1">
-                        <v-toolbar>
+                        <v-toolbar flat>
                             <v-toolbar-title>Drop-off Details</v-toolbar-title>
                             <v-spacer></v-spacer>
                             <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Clear</p>
                         </v-toolbar>
+                        <v-divider></v-divider>
                         <v-card-text>
                             <v-row>
                                 <v-col sm="6" cols="6">
@@ -363,7 +371,7 @@
                                                     placeholder="Commodity"></v-text-field>
                                             </v-col>
 
-                                           
+
                                         </v-row>
 
                                         <v-row>
@@ -393,18 +401,200 @@
 
                         </v-card-text>
                     </v-card>
-                    <v-btn color="primary" @click="e1 = 1" plain>
-                        <v-icon>mdi-chevron-left</v-icon>Pick-up Details 
-                    </v-btn>
+                    <v-row>
+                        <!-- This button will be aligned to the left -->
+                        <v-col cols="auto">
+                            <v-btn color="primary" @click="e1 = 1" plain>
+                                <v-icon>mdi-chevron-left</v-icon>Pick-up Details
+                            </v-btn>
+                        </v-col>
 
-                    <v-btn plain color="primary" @click="e1 = 3">
-                        Highway Dispatch <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
+                        <v-spacer></v-spacer> <!-- This spacer will push the next button to the right -->
+
+                        <!-- This button will be aligned to the right -->
+                        <v-col cols="auto">
+                            <v-btn plain color="primary" @click="e1 = 3">
+                                Highway Dispatch <v-icon>mdi-chevron-right</v-icon>
+                            </v-btn>
+                        </v-col>
+                    </v-row>
                 </v-stepper-content>
 
                 <v-stepper-content step="3">
-                    <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+                    <!-- <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card> -->
+                    <v-card class="mb-12" color="white lighten-1">
+                        <v-toolbar flat>
+                            <v-toolbar-title>Highway Dispatch</v-toolbar-title>
+                            <v-spacer></v-spacer>
+                            <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Clear</p>
+                        </v-toolbar>
+                        <v-divider></v-divider>
+                        <v-card-text>
+                            <v-row>
+                                <v-col cols="12" sm="12">
+                                    <v-stepper alt-labels>
+                                        <v-stepper-header class="no-elevation">
+                                            <v-stepper-step step="1">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Pickup Overview</p>
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Address</p>
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Pickup person</p>
+                                            </v-stepper-step>
 
+                                            <v-divider class="bold-dashed-divider"></v-divider>
+
+                                            <!-- <v-stepper-step step="2">
+                                                <v-icon>mdi-check</v-icon>
+                                            </v-stepper-step> -->
+
+                                            <v-divider class="bold-dashed-divider"></v-divider>
+
+                                            <v-stepper-step step="2">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Deleivry overview</p>
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Address</p>
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Phone number</p>
+                                            </v-stepper-step>
+                                        </v-stepper-header>
+
+                                    </v-stepper>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Shippers Name</p>
+                                    <v-text-field outlined type="text" required></v-text-field>
+                                </v-col>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Phone</p>
+                                    <v-text-field v-model="phoneNumber" label="Phone Number" prepend-inner-icon="mdi-phone"
+                                        required outlined>
+                                        <!-- <template v-slot:prepend>
+                                            <CountryRegionSelect v-model="selectedCountry" :countries="countries"
+                                                label="Country" hide-details outlined></CountryRegionSelect>
+                                        </template> -->
+                                    </v-text-field>
+                                </v-col>
+
+                            </v-row>
+                            <v-row>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Address</p>
+                                    <v-text-field outlined type="text" required
+                                        placeholder="Unit / Street 1 / Etc..."></v-text-field>
+                                </v-col>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Street 2</p>
+                                    <v-text-field outlined type="text" placeholder="Adress" required></v-text-field>
+                                </v-col>
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">State</p>
+                                    <v-text-field outlined type="text" required plcaeholder="state"></v-text-field>
+                                </v-col>
+
+                            </v-row>
+
+                            <v-row>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">City</p>
+                                    <v-text-field outlined type="text" required placeholder="City"></v-text-field>
+                                </v-col>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Postal Code</p>
+                                    <v-text-field outlined type="text" placeholder="Postal Code" required></v-text-field>
+                                </v-col>
+                            </v-row>
+
+                            <v-row>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Pickup Number</p>
+                                    <v-text-field outlined type="text" required placeholder="Pickup Number"></v-text-field>
+                                </v-col>
+
+                                <v-col sm="4" cols="6">
+                                    <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Contact Person</p>
+                                    <v-text-field outlined type="text" placeholder="Contact Person" required></v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-card-actions>
+
+
+                                <v-spacer></v-spacer>
+
+                                <v-btn text plain @click="show = !show" v-if="show === false">Show advance settings
+                                    <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                                </v-btn>
+                                <v-btn text plain @click="show = !show" v-if="show === true">Hide advance settings
+                                    <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                                </v-btn>
+                            </v-card-actions>
+
+                            <v-expand-transition>
+                                <div v-show="show">
+                                    <v-divider></v-divider>
+
+                                    <v-card-text>
+                                        <v-row>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Pickup Number</p>
+                                                <v-text-field outlined type="text" required
+                                                    placeholder="Pickup Number"></v-text-field>
+                                            </v-col>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Contact Person</p>
+                                                <v-text-field outlined type="text" placeholder="Contact Person"
+                                                    required></v-text-field>
+                                            </v-col>
+                                        </v-row>
+
+                                        <v-row>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Commodity</p>
+                                                <v-text-field outlined type="text" required
+                                                    placeholder="Commodity"></v-text-field>
+                                            </v-col>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Temperature</p>
+                                                <v-text-field outlined type="text" placeholder="Temperature"
+                                                    required></v-text-field>
+                                            </v-col>
+                                        </v-row>
+
+                                        <v-row>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Skids</p>
+                                                <v-text-field outlined type="text" required v-model="skids"
+                                                    placeholder="Skids"></v-text-field>
+                                            </v-col>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Cases</p>
+                                                <v-text-field v-model="cases" outlined type="text" placeholder="Cases"
+                                                    required></v-text-field>
+                                            </v-col>
+
+                                            <v-col sm="4" cols="6">
+                                                <p class="subtitle-2 mb-1" style="color: #2B2B2B;">Weight</p>
+                                                <v-text-field v-model="Weight" outlined type="text" placeholder="Weight"
+                                                    required></v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                    </v-card-text>
+                                </div>
+                            </v-expand-transition>
+
+
+                        </v-card-text>
+                    </v-card>
                     <v-btn color="primary" @click="e1 = 1">
                         Continue
                     </v-btn>
@@ -445,4 +635,18 @@ export default {
     },
 };
 </script>
+
+<style>
+.no-elevation .v-stepper__step {
+    box-shadow: none !important;
+}
+
+.bold-dashed-divider {
+    border-top-style: dashed !important;
+    border-top-width: 3px !important;
+    /* Increase the width for a bolder line */
+    border-top-color: #000 !important;
+    /* Change color if needed */
+}
+</style>
   
