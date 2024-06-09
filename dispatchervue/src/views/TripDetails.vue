@@ -186,7 +186,7 @@ export default {
       singleExpand: false,
       headers: [
         { text: 'Trip Number', value: 'tripNumber' },
-        { text: 'Date', value: 'date' },
+        { text: 'Date', value: 'tripDate' },
         { text: 'Customer Name', value: 'customerName' },
         { text: 'Pickup', value: 'pickupLocation' },
         { text: 'Drop-off', value: 'dropoffLocation' },
@@ -210,8 +210,12 @@ export default {
           truckId: 'Truck 1',
           trailerId: 'Trailer 1',
           driverDetails: 'Driver 1',
-          pickupDetails: { shipperName: 'Shipper A', dateAndTime: 'Date & Time A', address: 'Address A' },
-          dropoffDetails: { receiverName: 'Receiver A', dateAndTime: 'Date & Time B', address: 'Address B' }
+          shipperName: 'Shipper A', 
+          dateAndTime: 'Date & Time A', 
+          address: 'Address A',
+          receiverName: 'Receiver A', 
+          dateAndTime: 'Date & Time B', 
+          address: 'Address B'
         },
         {
           id: 2,
