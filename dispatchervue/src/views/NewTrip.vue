@@ -622,29 +622,29 @@
                                 <v-card flat>
                                     <v-card-text>
                                     <v-row class="dotted-line-container mt-5">
-                                    <v-col cols="12" sm="2" md="2" class="pickup-overview" style="text-align: center;">
+                                    <v-col cols="12" lg="1" md="12" class="pickup-overview" style="text-align: center;">
                                         <v-icon>mdi-numeric-1-circle-outline</v-icon>
                                         <p>Pickup Overview</p>
-                                        <p>Test</p>
-                                        <p>08-06-2024, 13.02</p>
-                                        <p>Ludhiana</p>
+                                        <p>{{ShippersName}}</p>
+                                        <p>{{PickUpDate +" , " + PickUpTime}}</p>
+                                        <p>{{ ShipperCity }}</p>
                                     </v-col>
-                                    <v-col sm="4" md="4">
+                                    <v-col lg="5" md="12">
                                         <v-divider class="bold-dashed-divider" ></v-divider>
                                     </v-col>
-                                    <v-col cols="12" sm="1" md="1" class="dotted-line-middle" style=" align-items: center;">
+                                    <v-col cols="12" lg="1" md="12" class="dotted-line-middle" style=" align-items: center;">
                                         <div style="text-align: center;">
                                         <v-icon>mdi-truck-cargo-container</v-icon> </div>
                                     </v-col>
-                                    <v-col sm="4" md="4">
+                                    <v-col lg="4" md="12">
                                         <v-divider class="bold-dashed-divider" ></v-divider>
                                     </v-col>
-                                    <v-col cols="12" sm="1" md="1" class="delivery-overview" style="text-align: center;">
+                                    <v-col cols="12" lg="1" md="12" class="delivery-overview" style="text-align: center;">
                                         <v-icon>mdi-numeric-2-circle-outline</v-icon>
                                         <p>Drop-off Overview</p>
-                                        <p>Test</p>
-                                        <p>08-06-2024, 13.02</p>
-                                        <p>Ludhiana</p>
+                                        <p>{{ ReceiverName }}</p>
+                                        <p>{{ DropOffDate +" , " + DropOffTime }}</p>
+                                        <p>{{ ReceiverCity }}</p>
                                     </v-col>
                                     </v-row>
                                     </v-card-text>
